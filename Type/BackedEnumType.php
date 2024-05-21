@@ -29,10 +29,12 @@ final class BackedEnumType extends EnumType
     /**
      * @param T $className
      * @param U $backingType
+     * @param int[]|string[] $values
      */
     public function __construct(
         string $className,
         private readonly BuiltinType $backingType,
+        private readonly array $values,
     ) {
         parent::__construct($className);
     }
@@ -43,5 +45,13 @@ final class BackedEnumType extends EnumType
     public function getBackingType(): BuiltinType
     {
         return $this->backingType;
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function getValues(): array
+    {
+        return $this->values;
     }
 }

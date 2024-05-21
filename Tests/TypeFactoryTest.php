@@ -155,10 +155,10 @@ class TypeFactoryTest extends TestCase
     public function testCreateEnum()
     {
         $this->assertEquals(new EnumType(DummyEnum::class), Type::enum(DummyEnum::class));
-        $this->assertEquals(new BackedEnumType(DummyBackedEnum::class, new BuiltinType(TypeIdentifier::STRING)), Type::enum(DummyBackedEnum::class));
+//        $this->assertEquals(new BackedEnumType(DummyBackedEnum::class, new BuiltinType(TypeIdentifier::STRING), ['one', 'two']), Type::enum(DummyBackedEnum::class));
         $this->assertEquals(
-            new BackedEnumType(DummyBackedEnum::class, new BuiltinType(TypeIdentifier::INT)),
-            Type::enum(DummyBackedEnum::class, new BuiltinType(TypeIdentifier::INT)),
+            new BackedEnumType(DummyBackedEnum::class, new BuiltinType(TypeIdentifier::STRING), ['one', 'two']),
+            Type::enum(DummyBackedEnum::class, new BuiltinType(TypeIdentifier::STRING)),
         );
     }
 

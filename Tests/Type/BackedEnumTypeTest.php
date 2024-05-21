@@ -21,33 +21,33 @@ class BackedEnumTypeTest extends TestCase
 {
     public function testToString()
     {
-        $this->assertSame(DummyBackedEnum::class, (string) new BackedEnumType(DummyBackedEnum::class, Type::int()));
+        $this->assertSame(DummyBackedEnum::class, (string) new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']));
     }
 
     public function testIsNullable()
     {
-        $this->assertFalse((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isNullable());
+        $this->assertFalse((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isNullable());
     }
 
     public function testGetBaseType()
     {
-        $this->assertEquals(new BackedEnumType(DummyBackedEnum::class, Type::int()), (new BackedEnumType(DummyBackedEnum::class, Type::int()))->getBaseType());
+        $this->assertEquals(new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']), (new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->getBaseType());
     }
 
     public function testAsNonNullable()
     {
-        $type = new BackedEnumType(DummyBackedEnum::class, Type::int());
+        $type = new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']);
 
         $this->assertSame($type, $type->asNonNullable());
     }
 
     public function testIsA()
     {
-        $this->assertFalse((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isA(TypeIdentifier::ARRAY));
-        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isA(TypeIdentifier::OBJECT));
-        $this->assertFalse((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isA(self::class));
-        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isA(DummyBackedEnum::class));
-        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isA(\BackedEnum::class));
-        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::int()))->isA(\UnitEnum::class));
+        $this->assertFalse((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isA(TypeIdentifier::ARRAY));
+        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isA(TypeIdentifier::OBJECT));
+        $this->assertFalse((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isA(self::class));
+        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isA(DummyBackedEnum::class));
+        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isA(\BackedEnum::class));
+        $this->assertTrue((new BackedEnumType(DummyBackedEnum::class, Type::string(), ['one', 'two']))->isA(\UnitEnum::class));
     }
 }

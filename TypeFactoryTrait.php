@@ -221,7 +221,7 @@ trait TypeFactoryTrait
                 $backingType = new BuiltinType($typeIdentifier);
             }
 
-            return new BackedEnumType($className, $backingType);
+            return new BackedEnumType($className, $backingType, array_map(fn($case) => $case->getValue()->value, (new \ReflectionEnum($className))->getCases()));
         }
 
         return new EnumType($className);

@@ -44,7 +44,7 @@ class ReflectionTypeResolverTest extends TestCase
     /**
      * @return iterable<array{0: Type, 1: \ReflectionType, 2?: TypeContext}>
      */
-    public function resolveDataProvider(): iterable
+    static public function resolveDataProvider(): iterable
     {
         $typeContext = (new TypeContextFactory())->createFromClassName(ReflectionExtractableDummy::class);
         $reflection = new \ReflectionClass(ReflectionExtractableDummy::class);
@@ -89,7 +89,7 @@ class ReflectionTypeResolverTest extends TestCase
     /**
      * @return iterable<array{0: \ReflectionType}>
      */
-    public function classKeywordsTypesDataProvider(): iterable
+    static public function classKeywordsTypesDataProvider(): iterable
     {
         $reflection = new \ReflectionClass(ReflectionExtractableDummy::class);
 
